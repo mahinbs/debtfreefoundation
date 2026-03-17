@@ -1,5 +1,6 @@
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { useTranslation } from "../../contexts/LanguageContext";
 
 const AnimatedCounter = ({ value, duration = 2 }: { value: number, duration?: number }) => {
     const ref = useRef<HTMLSpanElement>(null);
@@ -61,6 +62,7 @@ const LedgerItem = ({ type, data, delay }: { type: string, data: string, delay: 
 );
 
 const Transparency = () => {
+    const { t } = useTranslation();
     return (
         <section className="py-24 bg-slate-900 relative overflow-hidden">
             {/* Rich Gradient Background */}
@@ -71,7 +73,7 @@ const Transparency = () => {
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-600/20 rounded-full blur-3xl -z-10 animate-pulse" style={{ animationDuration: '4s' }}></div>
             <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-emerald-600/10 rounded-full blur-3xl -z-10 animate-pulse" style={{ animationDuration: '7s' }}></div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-20">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -80,18 +82,17 @@ const Transparency = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                            Transparency & <span className="text-teal-400">Strength</span>
+                            {t('landing.transparency.title').split(' & ')[0]} & <span className="text-teal-400">{t('landing.transparency.title').split(' & ')[1]}</span>
                         </h2>
                         <p className="text-xl text-teal-100/80 max-w-2xl mx-auto leading-relaxed">
-                            Built on an immutable foundation of trust. Real-time data, verifiable reserves, and community-driven power.
+                            {t('landing.transparency.subtitle')}
                         </p>
                     </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-                    <StatItem label="Active Members" value="10,000" suffix="+" rawValue={10000} />
-                    <StatItem label="Safety Buffer Pool" value="25" prefix="₹" suffix=" Cr" rawValue={25} />
-                    <StatItem label="Production Units" value="50" suffix="+" rawValue={50} />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 max-w-2xl mx-auto">
+                    <StatItem label={t('landing.transparency.stats.members')} value="10,000" suffix="+" rawValue={10000} />
+                    <StatItem label={t('landing.transparency.stats.buffer')} value="25" prefix="₹" suffix=" Cr" rawValue={25} />
                 </div>
 
                 {/* Real-Time Ledger Section */}
@@ -104,20 +105,19 @@ const Transparency = () => {
                                 <h3 className="text-2xl font-bold text-white flex items-center gap-3">
                                     <span className="w-3 h-3 bg-emerald-500 rounded-full animate-ping absolute inline-flex opacity-75"></span>
                                     <span className="w-3 h-3 bg-emerald-500 rounded-full relative inline-flex"></span>
-                                    Live Ledger Activity
+                                    {t('landing.transparency.ledger.title')}
                                 </h3>
-                                <p className="text-teal-100/60 text-sm mt-1">Real-time updates from the DFF ecosystem</p>
+                                <p className="text-teal-100/60 text-sm mt-1">{t('landing.transparency.ledger.subtitle')}</p>
                             </div>
                             <div className="px-4 py-2 bg-emerald-500/10 rounded-full border border-emerald-500/20 text-emerald-400 text-xs font-mono">
-                                • SYSTEM OPERATIONAL
+                                • {t('landing.transparency.ledger.status')}
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                            <LedgerItem type="Latest Contribution" data="#TXN-8829 • ₹500" delay={0} />
-                            <LedgerItem type="Latest Contribution" data="#TXN-8830 • ₹1,200" delay={1} />
-                            <LedgerItem type="New Member" data="Bangalore • ID: 10442" delay={2} />
-                            <LedgerItem type="Production Output" data="Unit #4 • 1200 Units" delay={3} />
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <LedgerItem type={t('landing.transparency.ledger.contribution')} data="#TXN-8829 • ₹500" delay={0} />
+                            <LedgerItem type={t('landing.transparency.ledger.contribution')} data="#TXN-8830 • ₹1,200" delay={1} />
+                            <LedgerItem type={t('landing.transparency.ledger.newMember')} data="Bangalore • ID: 10442" delay={2} />
                         </div>
                     </div>
                 </div>

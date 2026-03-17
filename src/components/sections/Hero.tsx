@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-// import heroBg from "../../assets/hero_background.png"; // Image generation failed, temporary placeholder
 import { Link } from "react-router-dom";
+import { useTranslation } from "../../contexts/LanguageContext";
 
 const Hero = () => {
+    const { t } = useTranslation();
     const scrollToHowItWorks = () => {
         const element = document.getElementById('how-it-works');
         if (element) {
@@ -25,31 +26,31 @@ const Hero = () => {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="relative z-10 max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-                        From Debt to Dynasty.<br />
-                        <span className="text-teal-50">Build Wealth Together.</span>
+                        {t('landing.hero.titlePart1')}<br />
+                        <span className="text-teal-50">{t('landing.hero.titlePart2')}</span>
                     </h1>
                     <p className="text-xl md:text-2xl text-teal-50 max-w-3xl mx-auto mb-10 drop-shadow-md font-medium">
-                        Join the Debt Free Foundation ecosystem. A circular economy designed to eliminate financial stress and empower production.
+                        {t('landing.hero.subtitle')}
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
                         <Link
                             to="/register"
                             className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full text-lg font-bold transition-all transform hover:scale-105 shadow-lg block"
                         >
-                            Join the Movement
+                            {t('landing.hero.ctaPrimary')}
                         </Link>
                         <button
                             onClick={scrollToHowItWorks}
                             className="bg-white/90 hover:bg-white text-primary px-8 py-4 rounded-full text-lg font-bold transition-all transform hover:scale-105 shadow-lg backdrop-blur-sm"
                         >
-                            How It Works
+                            {t('landing.hero.ctaSecondary')}
                         </button>
                     </div>
                 </motion.div>

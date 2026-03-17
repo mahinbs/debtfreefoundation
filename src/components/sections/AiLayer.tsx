@@ -1,33 +1,35 @@
 import { motion } from "framer-motion";
 import { BrainCircuit, LineChart, ShieldCheck, Zap } from "lucide-react";
+import { useTranslation } from "../../contexts/LanguageContext";
 
 const AiLayer = () => {
+    const { t } = useTranslation();
     const features = [
         {
             icon: BrainCircuit,
-            title: "Predictive Insights",
-            desc: "Smart algorithms analyze spending habits to suggest optimal savings paths."
+            title: t('landing.aiLayer.features.predictive.title'),
+            desc: t('landing.aiLayer.features.predictive.desc')
         },
         {
             icon: LineChart,
-            title: "Profitability Intelligence",
-            desc: "Data-driven decisions for manufacturing units to maximize output."
+            title: t('landing.aiLayer.features.profitability.title'),
+            desc: t('landing.aiLayer.features.profitability.desc')
         },
         {
             icon: ShieldCheck,
-            title: "Fraud Detection",
-            desc: "Real-time monitoring protects the ecosystem from bad actors."
+            title: t('landing.aiLayer.features.fraud.title'),
+            desc: t('landing.aiLayer.features.fraud.desc')
         },
         {
             icon: Zap,
-            title: "Smart Disbursement",
-            desc: "AI-assisted logic ensures funds reach those who need them most effectively."
+            title: t('landing.aiLayer.features.disbursement.title'),
+            desc: t('landing.aiLayer.features.disbursement.desc')
         }
     ];
 
     return (
         <section className="py-24 bg-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                     {/* AI Visuals */}
@@ -48,8 +50,8 @@ const AiLayer = () => {
                                     <BrainCircuit className="w-6 h-6 text-primary" />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-gray-900">DFF Intelligence Core</h3>
-                                    <p className="text-sm text-gray-500">System Status: Active</p>
+                                    <h3 className="font-bold text-gray-900">{t('landing.aiLayer.core.title')}</h3>
+                                    <p className="text-sm text-gray-500">{t('landing.aiLayer.core.status')}</p>
                                 </div>
                             </div>
 
@@ -71,18 +73,17 @@ const AiLayer = () => {
                                 ))}
                             </div>
                             <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-100">
-                                <p className="text-xs text-gray-500 font-mono mb-2">Analysis Result</p>
-                                <p className="text-sm font-medium text-gray-800">Community wealth projection indicates 15% growth Q3.</p>
+                                <p className="text-xs text-gray-500 font-mono mb-2">{t('landing.aiLayer.core.analysis')}</p>
+                                <p className="text-sm font-medium text-gray-800">{t('landing.aiLayer.core.projection')}</p>
                             </div>
                         </div>
                     </motion.div>
 
                     {/* Content */}
                     <div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Powered by <span className="text-primary">Intelligent Data</span></h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">{t('landing.aiLayer.title').split(' ').slice(0, -2).join(' ')} <span className="text-primary">{t('landing.aiLayer.title').split(' ').slice(-2).join(' ')}</span></h2>
                         <p className="text-lg text-gray-600 mb-8">
-                            The DFF ecosystem isn't just a community; it's a smart network.
-                            We use advanced analytics to ensure sustainability, fair distribution, and maximum growth for every member.
+                            {t('landing.aiLayer.subtitle')}
                         </p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

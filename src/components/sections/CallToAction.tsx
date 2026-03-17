@@ -1,7 +1,9 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "../../contexts/LanguageContext";
 
 const CallToAction = () => {
+    const { t } = useTranslation();
     return (
         <section id="contact" className="py-24 bg-gray-900 relative overflow-hidden">
             {/* Decorative elements */}
@@ -9,11 +11,10 @@ const CallToAction = () => {
 
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                    Ready to Break Free?
+                    {t('landing.cta.title')}
                 </h2>
                 <p className="text-xl text-gray-300 mb-10">
-                    Join 10,000+ members who are reclaiming their financial future.
-                    Start your journey towards a debt-free life today.
+                    {t('landing.cta.subtitle')}
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4">

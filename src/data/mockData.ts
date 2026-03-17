@@ -74,16 +74,16 @@ export interface ProductionUnit {
 }
 
 // Production Mock
-export const myProductionUnit: ProductionUnit = {
-    id: 'pu1',
-    name: 'GreenTextiles Unit A',
-    sector: 'Textiles',
-    capital: 3000000,
-    members: 20,
-    profitability: 18.5,
-    status: 'OPERATIONAL',
-    nextPayout: '2026-03-01'
-};
+/* export const myProductionUnit: ProductionUnit = {
+78:     id: 'pu1',
+79:     name: 'GreenTextiles Unit A',
+80:     sector: 'Textiles',
+81:     capital: 3000000,
+82:     members: 20,
+83:     profitability: 18.5,
+84:     status: 'OPERATIONAL',
+85:     nextPayout: '2026-03-01'
+86: }; */
 
 // Mart Data
 export interface Product {
@@ -97,54 +97,15 @@ export interface Product {
     stock: 'IN_STOCK' | 'LOW_STOCK' | 'OUT_OF_STOCK';
 }
 
-export const martProducts: Product[] = [
-    {
-        id: 'p1',
-        name: 'Organic Cotton T-Shirt',
-        price: 450,
-        image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800',
-        category: 'Apparel',
-        bonusPoints: 45,
-        producer: 'GreenTextiles Unit A',
-        stock: 'IN_STOCK'
-    },
-    {
-        id: 'p2',
-        name: 'Eco-Friendly Notebook',
-        price: 120,
-        image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800',
-        category: 'Stationery',
-        bonusPoints: 12,
-        producer: 'PaperCraft Collective',
-        stock: 'IN_STOCK'
-    },
-    {
-        id: 'p3',
-        name: 'Handcrafted Ceramic Mug',
-        price: 350,
-        image: 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&q=80&w=800',
-        category: 'Home',
-        bonusPoints: 35,
-        producer: 'ClayWorks Group',
-        stock: 'LOW_STOCK'
-    },
-    {
-        id: 'p4',
-        name: 'Bamboo Toothbrush Set',
-        price: 180,
-        image: 'https://images.unsplash.com/photo-1602143407151-01114195191b?auto=format&fit=crop&q=80&w=800',
-        category: 'Personal Care',
-        bonusPoints: 18,
-        producer: 'EcoLiving Unit',
-        stock: 'IN_STOCK'
-    }
-];
+/* export const martProducts: Product[] = [
+...
+141: ]; */
 
 // Notifications
 export const notifications = [
     { id: 1, title: 'Contribution Successful', message: 'Your daily contribution of ₹50 was received.', type: 'success', time: '2 hours ago' },
-    { id: 2, title: 'New Product in Mart', message: 'Check out the new organic honey from Unit B.', type: 'info', time: '5 hours ago' },
-    { id: 3, title: 'Production Update', message: 'GreenTextiles Unit A reached 110% efficiency.', type: 'success', time: '1 day ago' },
+    // { id: 2, title: 'New Product in Mart', message: 'Check out the new organic honey from Unit B.', type: 'info', time: '5 hours ago' },
+    // { id: 3, title: 'Production Update', message: 'GreenTextiles Unit A reached 110% efficiency.', type: 'success', time: '1 day ago' },
 ];
 
 // Disbursement Queue Mock
@@ -158,7 +119,7 @@ export const disbursementQueue = [
 // Fraud Alerts Mock
 export const fraudAlerts = [
     { id: 1, member: "User #9921", issue: "Multiple missed contributions", riskLevel: "HIGH", date: "2024-02-16" },
-    { id: 2, member: "Unit #12 (Textiles)", issue: "Inventory mismatch > 5%", riskLevel: "MEDIUM", date: "2024-02-15" },
+    // { id: 2, member: "Unit #12 (Textiles)", issue: "Inventory mismatch > 5%", riskLevel: "MEDIUM", date: "2024-02-15" },
 ];
 
 // Admin Data Mocks
@@ -171,9 +132,7 @@ export const allMembers: User[] = [
     { id: 'u6', name: 'James Rod', role: 'MEMBER', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150', memberId: 'DFF-2024-1122', joinDate: '2024-01-20', kycStatus: 'VERIFIED' }
 ];
 
-export const allProductionUnits: ProductionUnit[] = [
-    myProductionUnit,
-    { id: 'pu2', name: 'BlueWave Pottery', sector: 'Handicrafts', capital: 2800000, members: 18, profitability: 12.4, status: 'OPERATIONAL', nextPayout: '2026-03-05' },
-    { id: 'pu3', name: 'SolarTech Assembly', sector: 'Electronics', capital: 4500000, members: 25, profitability: -2.1, status: 'MAINTENANCE', nextPayout: '2026-04-01' },
-    { id: 'pu4', name: 'Organic Foods Co.', sector: 'Agriculture', capital: 3200000, members: 22, profitability: 8.9, status: 'OPERATIONAL', nextPayout: '2026-02-28' },
-];
+/* export const allProductionUnits: ProductionUnit[] = [
+175:     myProductionUnit,
+...
+179: ]; */

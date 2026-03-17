@@ -32,7 +32,7 @@ const products = [
 const MartPreview = () => {
     return (
         <section id="mart" className="py-24 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12">
                     <div className="max-w-2xl">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">DFF Mart</h2>

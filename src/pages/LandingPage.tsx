@@ -3,7 +3,7 @@ import Hero from "../components/sections/Hero";
 import ProblemSolution from "../components/sections/ProblemSolution";
 import DffWorks from "../components/sections/DffWorks";
 import ModulesGrid from "../components/sections/ModulesGrid";
-import MartPreview from "../components/sections/MartPreview";
+// import MartPreview from "../components/sections/MartPreview";
 import Transparency from "../components/sections/Transparency";
 import AiLayer from "../components/sections/AiLayer";
 import CallToAction from "../components/sections/CallToAction";
@@ -15,7 +15,7 @@ const LandingPage = () => {
             <ProblemSolution />
             <DffWorks />
             <ModulesGrid />
-            <MartPreview />
+            {/* <MartPreview /> */}
             <Transparency />
             <AiLayer />
             <CallToAction />

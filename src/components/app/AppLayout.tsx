@@ -3,28 +3,33 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import {
     LayoutDashboard,
     BookOpen,
-    Factory,
-    ShoppingBag,
+    // Factory,
+    // ShoppingBag,
     Menu,
     X,
     Bell,
     LogOut,
     ShieldCheck,
-    BrainCircuit
+    BrainCircuit,
+    Settings
 } from "lucide-react";
 import { currentUser } from "../../data/mockData";
+import { useTranslation } from "../../contexts/LanguageContext";
+import CustomDropdown from "../ui/CustomDropdown";
+import { LOGO } from "../../data/constant";
 
 const AppLayout = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const location = useLocation();
 
+    const { t, language, setLanguage } = useTranslation();
+
     const navigation = [
-        { name: "Dashboard", href: "/app/dashboard", icon: LayoutDashboard },
-        { name: "Financial Ledger", href: "/app/ledger", icon: BookOpen },
-        { name: "My Production Unit", href: "/app/production", icon: Factory },
-        { name: "DFF Mart", href: "/app/mart", icon: ShoppingBag },
-        { name: "Recovery Engine", href: "/app/recovery", icon: ShieldCheck },
-        { name: "AI Insights", href: "/app/ai-insights", icon: BrainCircuit },
+        { name: t('common.dashboard'), href: "/app/dashboard", icon: LayoutDashboard },
+        { name: t('nav.ledger'), href: "/app/ledger", icon: BookOpen },
+        { name: t('nav.recovery'), href: "/app/recovery", icon: ShieldCheck },
+        { name: t('nav.aiInsights'), href: "/app/ai-insights", icon: BrainCircuit },
+        { name: t('common.settings'), href: "/app/settings", icon: Settings },
     ];
 
     return (
@@ -45,7 +50,7 @@ const AppLayout = () => {
         `}
             >
                 <div className="h-20 flex items-center justify-between px-6 border-b border-gray-100">
-                    <span className="text-2xl font-bold text-primary tracking-tight">DFF App</span>
+                    <img src={LOGO} className="w-[3rem] md:w-[4rem] object-contain" />
                     <button
                         onClick={() => setIsSidebarOpen(false)}
                         className="lg:hidden text-gray-400 hover:text-gray-500"
@@ -58,7 +63,7 @@ const AppLayout = () => {
                     <div className="mb-8 flex-1">
                         <p className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Menu</p>
                         {navigation.map((item) => {
-                            const isActive = location.pathname.startsWith(item.href);
+                            const isActive = location.pathname === item.href;
                             return (
                                 <Link
                                     key={item.name}
@@ -80,7 +85,7 @@ const AppLayout = () => {
 
                     <div className="pt-4 border-t border-gray-100">
                         <div className="px-4 py-3 flex items-center space-x-3">
-                            <img src={currentUser.avatar} alt="User" className="w-10 h-10 rounded-full" />
+                            <img src={currentUser.avatar} alt="User" className="w-10 h-10 rounded-full object-cover" />
                             <div>
                                 <p className="text-sm font-medium text-gray-900">{currentUser.name}</p>
                                 <p className="text-xs text-gray-500">{currentUser.memberId}</p>
@@ -91,7 +96,7 @@ const AppLayout = () => {
                             onClick={() => window.location.href = '/'}
                         >
                             <LogOut className="w-4 h-4 mr-3" />
-                            Sign Out
+                            {t('common.logout')}
                         </button>
                     </div>
                 </div>
@@ -109,6 +114,19 @@ const AppLayout = () => {
                     </button>
 
                     <div className="flex-1 flex justify-end items-center space-x-4">
+                        {/* Custom Language Dropdown */}
+                        <div className="w-32">
+                            <CustomDropdown
+                                options={[
+                                    { value: 'en', label: 'English' },
+                                    { value: 'ml', label: 'മലയാളം' }
+                                ]}
+                                value={language}
+                                onChange={(val) => setLanguage(val as 'en' | 'ml')}
+                                className="h-9"
+                            />
+                        </div>
+
                         <button className="relative p-2 text-gray-400 hover:text-gray-500 transition-colors">
                             <Bell className="w-6 h-6" />
                             <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>

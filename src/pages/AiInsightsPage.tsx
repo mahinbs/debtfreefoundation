@@ -1,5 +1,6 @@
 import { BrainCircuit, Lightbulb, AlertOctagon } from "lucide-react";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { useTranslation } from "../contexts/LanguageContext";
 
 const data = [
     { name: 'Jan', profit: 4000, savings: 2400 },
@@ -11,22 +12,24 @@ const data = [
 ];
 
 const AiInsightsPage = () => {
+    const { t } = useTranslation();
+    
     return (
         <div className="space-y-6">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-900">AI Insights</h1>
-                    <p className="text-gray-500">Data-driven intelligence to maximize your wealth.</p>
+                    <h1 className="text-2xl font-bold text-gray-900">{t('aiInsights.title')}</h1>
+                    <p className="text-gray-500">{t('aiInsights.subtitle')}</p>
                 </div>
                 <div className="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-xs font-bold flex items-center border border-indigo-100">
-                    <BrainCircuit className="w-3 h-3 mr-1" /> AI Engine Active
+                    <BrainCircuit className="w-3 h-3 mr-1" /> {t('aiInsights.engineActive')}
                 </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Main Chart */}
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 md:col-span-2">
-                    <h3 className="font-bold text-gray-900 mb-6">Profitability Projection</h3>
+                    <h3 className="font-bold text-gray-900 mb-6">{t('aiInsights.projectionTitle')}</h3>
                     <div className="h-[300px] w-full">
                         <ResponsiveContainer width="100%" height="100%">
                             <AreaChart
@@ -54,16 +57,12 @@ const AiInsightsPage = () => {
                 {/* Smart Suggestions */}
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                     <h3 className="font-bold text-gray-900 mb-4 flex items-center">
-                        <Lightbulb className="w-5 h-5 text-yellow-500 mr-2" /> Smart Suggestions
+                        <Lightbulb className="w-5 h-5 text-yellow-500 mr-2" /> {t('aiInsights.suggestions.title')}
                     </h3>
                     <div className="space-y-4">
                         <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-100">
-                            <p className="text-sm font-bold text-gray-900 mb-1">Increase specific savings</p>
-                            <p className="text-xs text-gray-600">Based on your spending, allocating ₹500 more to the buffer will unlock Tier 2 benefits.</p>
-                        </div>
-                        <div className="p-4 bg-green-50 rounded-lg border border-green-100">
-                            <p className="text-sm font-bold text-gray-900 mb-1">Productivity Tip</p>
-                            <p className="text-xs text-gray-600">Your unit is 5% below sector average efficiency. Consider optimizing shift module B.</p>
+                            <p className="text-sm font-bold text-gray-900 mb-1">{t('aiInsights.suggestions.increaseSavings')}</p>
+                            <p className="text-xs text-gray-600">{t('aiInsights.suggestions.savingsDesc')}</p>
                         </div>
                     </div>
                 </div>
@@ -71,20 +70,20 @@ const AiInsightsPage = () => {
                 {/* Risk Analysis */}
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                     <h3 className="font-bold text-gray-900 mb-4 flex items-center">
-                        <AlertOctagon className="w-5 h-5 text-red-500 mr-2" /> Risk Factors
+                        <AlertOctagon className="w-5 h-5 text-red-500 mr-2" /> {t('aiInsights.risk.title')}
                     </h3>
                     <div className="space-y-4">
                         <div className="flex items-center justify-between">
-                            <span className="text-sm text-gray-600">Market Volatility</span>
-                            <span className="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">Low</span>
+                            <span className="text-sm text-gray-600">{t('aiInsights.risk.marketVolatility')}</span>
+                            <span className="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">{t('aiInsights.risk.low')}</span>
                         </div>
                         <div className="w-full bg-gray-100 rounded-full h-1.5">
                             <div className="bg-green-500 h-1.5 rounded-full" style={{ width: '20%' }}></div>
                         </div>
 
                         <div className="flex items-center justify-between pt-2">
-                            <span className="text-sm text-gray-600">Supply Chain Delay</span>
-                            <span className="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">Moderate</span>
+                            <span className="text-sm text-gray-600">{t('aiInsights.risk.supplyChainDelay')}</span>
+                            <span className="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">{t('aiInsights.risk.moderate')}</span>
                         </div>
                         <div className="w-full bg-gray-100 rounded-full h-1.5">
                             <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: '45%' }}></div>
@@ -97,3 +96,4 @@ const AiInsightsPage = () => {
 };
 
 export default AiInsightsPage;
+

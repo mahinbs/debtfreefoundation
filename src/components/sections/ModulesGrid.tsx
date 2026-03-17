@@ -1,56 +1,49 @@
 import { motion } from "framer-motion";
-import { UserCheck, BookOpen, Wallet, Factory, ShoppingBag, HeartHandshake, Bot } from "lucide-react";
-
-const modules = [
-    {
-        icon: UserCheck,
-        title: "Member Onboarding & KYC",
-        desc: "Seamless verification ensuring a trusted network of verified individuals."
-    },
-    {
-        icon: BookOpen,
-        title: "Financial Ledger System",
-        desc: "Transparent tracking of every contribution, ensuring complete accountability."
-    },
-    {
-        icon: Wallet,
-        title: "Disbursement & Equity",
-        desc: "Fair distribution logic that prioritizes member needs and system health."
-    },
-    {
-        icon: Factory,
-        title: "Manufacturing Units",
-        desc: "Community-owned production centers creating real value and goods."
-    },
-    {
-        icon: ShoppingBag,
-        title: "DFF Mart",
-        desc: "Internal marketplace where members buy and sell produced goods."
-    },
-    {
-        icon: HeartHandshake,
-        title: "Zero Tension Recovery",
-        desc: "A humane approach to financial recovery without harassment."
-    },
-    {
-        icon: Bot,
-        title: "AI Transparency Layer",
-        desc: "Real-time insights and fraud detection powered by advanced AI."
-    }
-];
+import { UserCheck, BookOpen, Wallet, /* Factory, ShoppingBag, */ HeartHandshake, Bot } from "lucide-react";
+import { useTranslation } from "../../contexts/LanguageContext";
 
 const ModulesGrid = () => {
+    const { t } = useTranslation();
+
+    const modules = [
+        {
+            icon: UserCheck,
+            title: t('landing.modulesGrid.onboarding.title'),
+            desc: t('landing.modulesGrid.onboarding.desc')
+        },
+        {
+            icon: BookOpen,
+            title: t('landing.modulesGrid.ledger.title'),
+            desc: t('landing.modulesGrid.ledger.desc')
+        },
+        {
+            icon: Wallet,
+            title: t('landing.modulesGrid.disbursement.title'),
+            desc: t('landing.modulesGrid.disbursement.desc')
+        },
+        {
+            icon: HeartHandshake,
+            title: t('landing.modulesGrid.recovery.title'),
+            desc: t('landing.modulesGrid.recovery.desc')
+        },
+        {
+            icon: Bot,
+            title: t('landing.modulesGrid.ai.title'),
+            desc: t('landing.modulesGrid.ai.desc')
+        }
+    ];
+
     return (
         <section id="platform" className="py-24 bg-gray-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Platform Modules</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('landing.modulesGrid.title')}</h2>
                     <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-                        A comprehensive ecosystem designed to handle every aspect of economic growth.
+                        {t('landing.modulesGrid.subtitle')}
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
                     {modules.map((module, index) => (
                         <motion.div
                             key={index}
@@ -74,3 +67,4 @@ const ModulesGrid = () => {
 };
 
 export default ModulesGrid;
+

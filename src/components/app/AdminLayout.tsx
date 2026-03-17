@@ -3,26 +3,31 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import {
     LayoutDashboard,
     BookOpen,
-    Factory,
-    ShoppingBag,
+    // Factory,
+    // ShoppingBag,
     Menu,
     X,
     Bell,
     LogOut,
-    Users
+    Users,
+    Settings
 } from "lucide-react";
 import { currentUser } from "../../data/mockData"; // Keep using mock user for now, or use a specific admin mock
+import { useTranslation } from "../../contexts/LanguageContext";
+import CustomDropdown from "../ui/CustomDropdown";
+import { LOGO } from "../../data/constant";
 
 const AdminLayout = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const location = useLocation();
 
+    const { t, language, setLanguage } = useTranslation();
+
     const currentNav = [
-        { name: "Admin Dashboard", href: "/admin", icon: LayoutDashboard },
-        { name: "Member Management", href: "/admin?tab=members", icon: Users },
-        { name: "Production Units", href: "/admin?tab=production", icon: Factory },
-        { name: "Financial Master", href: "/admin?tab=financials", icon: BookOpen },
-        { name: "Mart Inventory", href: "/admin?tab=inventory", icon: ShoppingBag },
+        { name: t('common.dashboard'), href: "/admin", icon: LayoutDashboard },
+        { name: t('nav.ledger'), href: "/admin?tab=members", icon: Users },
+        { name: t('nav.ledger'), href: "/admin?tab=financials", icon: BookOpen }, // Re-using ledger key for now or a general one
+        { name: t('common.settings'), href: "/admin/settings", icon: Settings },
     ];
 
     return (
@@ -43,7 +48,7 @@ const AdminLayout = () => {
         `}
             >
                 <div className="h-20 flex items-center justify-between px-6 border-b border-gray-700">
-                    <span className="text-2xl font-bold text-teal-400 tracking-tight">DFF Admin</span>
+                    <img src={LOGO} className="w-[3rem] md:w-[4rem] object-contain" />
                     <button
                         onClick={() => setIsSidebarOpen(false)}
                         className="lg:hidden text-gray-400 hover:text-gray-200"
@@ -56,7 +61,7 @@ const AdminLayout = () => {
                     <div className="mb-8 flex-1">
                         <p className="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Admin Tools</p>
                         {currentNav.map((item) => {
-                            const isActive = (location.pathname + location.search) === item.href || (item.href === '/admin' && location.search === '');
+                            const isActive = (location.pathname + location.search) === item.href;
                             return (
                                 <Link
                                     key={item.name}
@@ -69,7 +74,7 @@ const AdminLayout = () => {
                     `}
                                     onClick={() => setIsSidebarOpen(false)}
                                 >
-                                    <item.icon className={`w-5 h-5 mr-3 ${isActive ? 'text-teal-400' : 'text-gray-500'}`} />
+                                    {item.icon && <item.icon className={`w-5 h-5 mr-3 ${isActive ? 'text-teal-400' : 'text-gray-500'}`} />}
                                     {item.name}
                                 </Link>
                             );
@@ -78,7 +83,7 @@ const AdminLayout = () => {
 
                     <div className="pt-4 border-t border-gray-700">
                         <div className="px-4 py-3 flex items-center space-x-3">
-                            <img src={currentUser.avatar} alt="User" className="w-10 h-10 rounded-full" />
+                            <img src={currentUser.avatar} alt="User" className="w-10 h-10 rounded-full object-cover" />
                             <div>
                                 <p className="text-sm font-medium text-gray-200">Admin User</p>
                                 <p className="text-xs text-gray-500">Super Admin</p>
@@ -89,7 +94,7 @@ const AdminLayout = () => {
                             onClick={() => window.location.href = '/'}
                         >
                             <LogOut className="w-4 h-4 mr-3" />
-                            Sign Out
+                            {t('common.logout')}
                         </button>
                     </div>
                 </div>
@@ -107,6 +112,19 @@ const AdminLayout = () => {
                     </button>
 
                     <div className="flex-1 flex justify-end items-center space-x-4">
+                        {/* Custom Language Dropdown */}
+                        <div className="w-32">
+                            <CustomDropdown
+                                options={[
+                                    { value: 'en', label: 'English' },
+                                    { value: 'ml', label: 'മലയാളം' }
+                                ]}
+                                value={language}
+                                onChange={(val) => setLanguage(val as 'en' | 'ml')}
+                                className="h-9"
+                            />
+                        </div>
+
                         <button className="relative p-2 text-gray-400 hover:text-gray-500 transition-colors">
                             <Bell className="w-6 h-6" />
                             <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
